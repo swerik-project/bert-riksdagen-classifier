@@ -32,6 +32,7 @@ jobs:
         pip install trainerlog
         pip install bidict
         pip install torch
+        pip install scikit-learn
         pip install pdoc
 
     - name: Get release type
