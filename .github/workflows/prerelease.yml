@@ -33,6 +33,7 @@ jobs:
         pip install bidict
         pip install torch
         pip install scikit-learn
+        pip install Levenshtein
         pip install pdoc
 
     - name: Get release type
