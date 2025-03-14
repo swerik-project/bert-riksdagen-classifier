@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: To cite this reposository, please use these metadata.
+title: Fine-tuned BERT models for SWERIK tasks
+version: v0.4.0
+authors:
+  - given-names: Adam
+    family-names: Maen
+    alias: mhdmaen
+  - given-names: Fabian
+    family-names: Eriksso
+    alias: vgkz
+  - given-names: Väinö
+    family-names: Yrjänäinen
+    alias: ninpnin
+  - family-names: Borges
+    given-names: Robert
+    orcid: "https://orcid.org/0000-0002-7647-4048"
+    alias: BobBorges
+date-released: 2025-03-15
+identifiers:
+  - description: Repository basename
+    type: other
+    value: bert-riksdagen-classifier
+repository-code: "https://github.com/swerik-project/bert-riksdagen-classifier"
+url: "https://swerik-project.github.io/bert-riksdagen-classifier"
+type: software
