@@ -74,7 +74,7 @@ jobs:
     - name: Build documentation
       run: |
         echo "Release version ${{ env.RELEASE_NR }}"
-        pdoc -o docs --footer-text ${{ env.RELEASE_NR }} -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg .
+        pdoc -o docs --footer-text ${{ env.RELEASE_NR }} -t docs/dark-mode --logo https://raw.githubusercontent.com/swerik-project/the-swedish-parliament-corpus/refs/heads/main/readme/riksdagshuset.jpg ../bert-riksdagen-classifier
 
     - name: Add and commit changes
       run: |
