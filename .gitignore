@@ -1,3 +1,5 @@
 trained/*.pth
 trained
+models/*
+!models/README.md
 **/.DS_Store
