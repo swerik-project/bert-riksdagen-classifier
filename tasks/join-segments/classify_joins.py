@@ -13,6 +13,17 @@ import os
 from lxml import etree
 import progressbar
 
+
+
+
+def dehyphenate_endline(line1, line2):
+    line1s = line1.strip()
+    if line1s[-1] in ["-", "–", "—"]:
+        return line1s[:-1] + line2.strip()
+    else:
+        return line1 + line2
+
+
 def join_elems(root, classifier):
     for tag, elem in elem_iter(root):
         if tag == 'note':
@@ -22,7 +33,7 @@ def join_elems(root, classifier):
                     pass
                 else:
                     prev_sequence = get_sequence_from_elem_list(prev_elem_list)
-                    new_sequence = remove_whitespace_from_sequence(prev_sequence + elem.text)
+                    new_sequence = remove_whitespace_from_sequence(dehyphenate_endline(prev_sequence, elem.text))
                     c = classifier(new_sequence)
                     if c == 'join':
                         prev_elem_list[0].text = new_sequence
@@ -36,13 +47,16 @@ def join_elems(root, classifier):
                         pass
                     else:
                         prev_sequence = get_sequence_from_elem_list(prev_elem_list)
-                        new_sequence = remove_whitespace_from_sequence(prev_sequence + child.text)
+                        new_sequence = remove_whitespace_from_sequence(dehyphenate_endline(prev_sequence, child.text))
                         c = classifier(new_sequence)
                         if c == 'join':
                             prev_elem_list[0].text = new_sequence
                             child.getparent().remove(child)
         
     return root
+
+
+
 
 def main(args):
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -71,6 +85,8 @@ def main(args):
     
         with open(protocol_path, "wb") as f:
             f.write(b)
+
+
 
         
 if __name__ == "__main__":
